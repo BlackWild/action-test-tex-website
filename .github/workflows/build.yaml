@@ -25,6 +25,7 @@ jobs:
         with:
             image: pandoc/core:3.1-ubuntu
             run: |
+              apt-get update
               apt-get install -y make
               make --version
 
