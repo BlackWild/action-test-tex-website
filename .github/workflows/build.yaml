@@ -12,15 +12,25 @@ jobs:
       - name: Check git
         run: |
           git --version
-      - name: Check if pandoc container is working
-        uses: docker://pandoc/core:3.1-ubuntu
+
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
         with:
-          entrypoint: pandoc
-          avg: --version
+            image: pandoc/core:3.1-ubuntu
+            run: |
+                pandoc --version
+
+      # - name: Check if pandoc container is working
+      #   uses: docker://pandoc/core:3.1-ubuntu
+      #   with:
+      #     entrypoint: pandoc
+      #     avg: --version
         # run: |
           # pandoc --version
+
       - name: Check out repository code
         uses: actions/checkout@v4
+
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
