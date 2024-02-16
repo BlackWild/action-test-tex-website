@@ -5,8 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # container:
-    #     image: docker://pandoc/core:2.9
+    container:
+        image: docker://pandoc/core:2.9
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -20,3 +20,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Test pandoc
+        run: |
+          which pandoc
+          pandoc --version
