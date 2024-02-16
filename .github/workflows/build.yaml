@@ -5,16 +5,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    container:
-        image: docker://pandoc/core:3.1-ubuntu
+    # container:
+    #     image: docker://pandoc/core:3.1-ubuntu
 
     steps:
       - name: Check git
         run: |
           git --version
       - name: Check if pandoc container is working
-        run: |
-          pandoc --version
+        uses: docker://pandoc/core:3.1-ubuntu
+        with:
+          entrypoint: pandoc
+          avg: --version
+        # run: |
+          # pandoc --version
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: List files in the repository
