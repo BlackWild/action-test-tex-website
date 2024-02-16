@@ -27,6 +27,7 @@ jobs:
             run: |
               apt-get update
               apt-get install -y make
+              pwd
               make all
 
       - name: Postbuild listing of files in the repository
