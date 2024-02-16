@@ -13,24 +13,20 @@ jobs:
         run: |
           git --version
 
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Prebuild listing of files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
       - name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
         with:
             image: pandoc/core:3.1-ubuntu
             run: |
-                pandoc --version
+                make --version
 
-      # - name: Check if pandoc container is working
-      #   uses: docker://pandoc/core:3.1-ubuntu
-      #   with:
-      #     entrypoint: pandoc
-      #     avg: --version
-        # run: |
-          # pandoc --version
-
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - name: List files in the repository
+      - name: Postbuild listing of files in the repository
         run: |
           ls ${{ github.workspace }}
