@@ -27,7 +27,7 @@ jobs:
             run: |
               apt-get update
               apt-get install -y make
-              make --version
+              make all
 
       - name: Postbuild listing of files in the repository
         run: |
