@@ -28,6 +28,8 @@ jobs:
               apt-get update
               apt-get install -y make
               pwd
+              cd ${{ github.workspace }}
+              pwd
               make all
 
       - name: Postbuild listing of files in the repository
