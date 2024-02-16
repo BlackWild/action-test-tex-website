@@ -25,7 +25,8 @@ jobs:
         with:
             image: pandoc/core:3.1-ubuntu
             run: |
-                make --version
+              apt-get install -y make
+              make --version
 
       - name: Postbuild listing of files in the repository
         run: |
