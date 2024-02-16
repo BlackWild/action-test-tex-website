@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-        image: docker://pandoc/core:3.1
+        image: docker://pandoc/core:3.1-ubuntu
 
     steps:
       - name: Check if pandoc container is working
@@ -17,4 +17,3 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          
