@@ -13,6 +13,7 @@ jobs:
         run: |
           git --version
           
+      # TODO: maybe it makes sense to make a public docker container and use it instead... especially if this gets more complicated
       - name: Install Pandoc
         shell: bash
         run: |
@@ -29,17 +30,15 @@ jobs:
       - name: Run make
         run: |
           make all
-        # uses: addnab/docker-run-action@v3
-        # with:
-        #     image: pandoc/core:3.1-ubuntu
-        #     run: |
-        #       apt-get update
-        #       apt-get install -y make
-        #       pwd
-        #       cd ${{ github.workspace }}
-        #       pwd
-        #       make all
 
       - name: Postbuild listing of files in the repository
         run: |
           ls ${{ github.workspace }}
+
+      - name: Archive the output files
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: |
+            build
+            
