@@ -23,13 +23,13 @@ content: tex markdown
 tex: $(TEX_TARGET)
 build/%.md: %.tex
 	mkdir -p $(dir $@)
-	pandoc -f latex -t markdown_strict $< -s -o $@
+	pandoc -f latex -t markdown $< -s -o $@
 
 # convert markdown content to markdown using pandoc, it is almost just copying but transforms to strict markdown if needed
 markdown: $(MARKDOWN_TARGET)
 build/%.md: %.md
 	mkdir -p $(dir $@)
-	pandoc -f markdown -t markdown_strict $< -s -o $@
+	pandoc -f markdown -t markdown $< -s -o $@
 
 
 # remove the `build` folder
