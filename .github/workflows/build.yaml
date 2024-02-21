@@ -14,7 +14,7 @@ jobs:
           git --version
           
       - name: Setup pandoc
-        uses: siacodelabs/setup-pandoc
+        uses: siacodelabs/setup-pandoc@v1
         with:
           xelatex: false
       
