@@ -13,8 +13,11 @@ jobs:
         run: |
           git --version
           
-      - name: Setup pandoc
-        uses: siacodelabs/setup-pandoc@v1
+      - name: Install Pandoc
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt install -y --no-install-recommends pandoc
       
       - name: Check out repository code
         uses: actions/checkout@v4
